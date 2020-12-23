@@ -1,0 +1,15 @@
+G:\MISHA\UI\MishaTest\MishaTest\bin\Debug\MishaTest.exe.config
+G:\MISHA\UI\MishaTest\MishaTest\bin\Debug\MishaTest.exe
+G:\MISHA\UI\MishaTest\MishaTest\bin\Debug\MishaTest.pdb
+G:\MISHA\UI\MishaTest\MishaTest\obj\Debug\MishaTest.csprojAssemblyReference.cache
+G:\MISHA\UI\MishaTest\MishaTest\obj\Debug\MainWindow.g.cs
+G:\MISHA\UI\MishaTest\MishaTest\obj\Debug\App.g.cs
+G:\MISHA\UI\MishaTest\MishaTest\obj\Debug\MishaTest_MarkupCompile.cache
+G:\MISHA\UI\MishaTest\MishaTest\obj\Debug\MishaTest_MarkupCompile.lref
+G:\MISHA\UI\MishaTest\MishaTest\obj\Debug\MainWindow.baml
+G:\MISHA\UI\MishaTest\MishaTest\obj\Debug\MishaTest.g.resources
+G:\MISHA\UI\MishaTest\MishaTest\obj\Debug\MishaTest.Properties.Resources.resources
+G:\MISHA\UI\MishaTest\MishaTest\obj\Debug\MishaTest.csproj.GenerateResource.cache
+G:\MISHA\UI\MishaTest\MishaTest\obj\Debug\MishaTest.csproj.CoreCompileInputs.cache
+G:\MISHA\UI\MishaTest\MishaTest\obj\Debug\MishaTest.exe
+G:\MISHA\UI\MishaTest\MishaTest\obj\Debug\MishaTest.pdb
