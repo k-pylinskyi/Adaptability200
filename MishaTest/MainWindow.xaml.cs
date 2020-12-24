@@ -15,6 +15,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+
 namespace MishaTest
 {
     /// <summary>
@@ -22,6 +26,16 @@ namespace MishaTest
     /// </summary>
     public partial class MainWindow : Window
     {
+        IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "jd18AAgjGJbiAdxfbEkmvjPzwooe8k4b2eKuP2vS",
+            BasePath = "https://adaptability200-default-rtdb.europe-west1.firebasedatabase.app/"
+        };
+
+        IFirebaseClient client;
+
+        Person person = new Person();
+
         string[] questions = new string[200]
 
             {
@@ -233,19 +247,25 @@ namespace MishaTest
         public MainWindow()
         {
             InitializeComponent();
+            client = new FireSharp.FirebaseClient(config);
+
+            if (client != null)
+            {
+                System.Windows.MessageBox.Show("Соединение с Базой Данных установленно епты бля");
+            }
+
             ShowResult.IsEnabled = false;
         }
 
         public void Results()
         {
-            int D = 0; //(достовiрнiсть)
-            int PR = 0; //(психiчна регуляцiя)
-            int KP = 0; //(комунiкативний потенцiал)
-            int MN = 0; //(моральна нормативнiсть)
-            int VPS = 0; //(вiйськово-професiйна спрямованiсть)
-            int DAP = 0; //(схильнiсть до девiантних форм поведiнки)
-            int SR = 0; //(суїцидальний ризик)
-            int OAP = 0;
+            person.D = 0;
+            person.PR = 0;
+            person.KP = 0;
+            person.MN = 0;
+            person.VPS = 0;
+            person.DAP = 0;
+            person.SR = 0;
 
             string res = string.Empty;
 
@@ -274,18 +294,18 @@ namespace MishaTest
                 bool SR_Key2 = (q == 32 || q == 105) && string.Equals(answers[i], "NO");
                 #endregion
 
-                if (D_Key) D++;
-                if (PR_Key1 || PR_Key2) PR++;
-                if (KP_Key1 || KP_Key2) KP++;
-                if (MN_Key1 || MN_Key2) MN++;
-                if (VPS_Key1 || VPS_Key2) VPS++;
-                if (DAP_Key1 || DAP_Key2) DAP++;
-                if (SR_Key1 || SR_Key2) SR++;
+                if (D_Key) person.D++;
+                if (PR_Key1 || PR_Key2) person.PR++;
+                if (KP_Key1 || KP_Key2) person.KP++;
+                if (MN_Key1 || MN_Key2) person.MN++;
+                if (VPS_Key1 || VPS_Key2) person.VPS++;
+                if (DAP_Key1 || DAP_Key2) person.DAP++;
+                if (SR_Key1 || SR_Key2) person.SR++;
 
-                OAP = PR + KP + MN;
+                person.OAP = person.PR + person.KP + person.MN;
             }
-            System.Windows.MessageBox.Show("достовiрнiсть " + D + "\nОАП " + OAP + "\nпсихiчна регуляцiя " + PR + "\nкомунiкативний потенцiал " + KP + "\nморальна нормативнiсть " + MN + "\nвiйськово-професiйна спрямованiсть " + VPS + "\nсхильнiсть до девiантних форм поведiнки " + DAP + "\nсуїцидальний ризик " + SR);
-            System.Windows.MessageBox.Show(D_Result(D) + "\n\n" + OAP_Result(OAP) + "\n\n" + PR_Result(PR) + "\n\n" + KP_Result(KP) + "\n\n" + MN_Result(MN) + "\n\n" + VPS_Result(VPS) + "\n\n" + DAP_Result(DAP) + "\n\n" + SR_Result(SR));
+            System.Windows.MessageBox.Show("достовiрнiсть " + person.D + "\nОАП " + person.OAP + "\nпсихiчна регуляцiя " + person.PR + "\nкомунiкативний потенцiал " + person.KP + "\nморальна нормативнiсть " + person.MN + "\nвiйськово-професiйна спрямованiсть " + person.VPS + "\nсхильнiсть до девiантних форм поведiнки " + person.DAP + "\nсуїцидальний ризик " + person.SR);
+            System.Windows.MessageBox.Show(D_Result(person.D) + "\n\n" + OAP_Result(person.OAP) + "\n\n" + PR_Result(person.PR) + "\n\n" + KP_Result(person.KP) + "\n\n" + MN_Result(person.MN) + "\n\n" + VPS_Result(person.VPS) + "\n\n" + DAP_Result(person.DAP) + "\n\n" + SR_Result(person.SR));
         }
 
         public void Yes_Click(object sender, RoutedEventArgs e)
