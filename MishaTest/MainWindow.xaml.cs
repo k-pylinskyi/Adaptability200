@@ -34,6 +34,7 @@ namespace MishaTest
 
         IFirebaseClient client;
 
+        Person myPerson = new Person();
         Person person = new Person();
 
         string[] questions = new string[200]
@@ -253,19 +254,17 @@ namespace MishaTest
             {
                 System.Windows.MessageBox.Show("Соединение с Базой Данных установленно епты бля");
             }
-
-            ShowResult.IsEnabled = false;
         }
 
         public void Results()
         {
-            person.D = 0;
-            person.PR = 0;
-            person.KP = 0;
-            person.MN = 0;
-            person.VPS = 0;
-            person.DAP = 0;
-            person.SR = 0;
+            myPerson.D = 0;
+            myPerson.PR = 0;
+            myPerson.KP = 0;
+            myPerson.MN = 0;
+            myPerson.VPS = 0;
+            myPerson.DAP = 0;
+            myPerson.SR = 0;
 
             string res = string.Empty;
 
@@ -295,17 +294,18 @@ namespace MishaTest
                 #endregion
 
                 if (D_Key) person.D++;
-                if (PR_Key1 || PR_Key2) person.PR++;
-                if (KP_Key1 || KP_Key2) person.KP++;
-                if (MN_Key1 || MN_Key2) person.MN++;
-                if (VPS_Key1 || VPS_Key2) person.VPS++;
-                if (DAP_Key1 || DAP_Key2) person.DAP++;
-                if (SR_Key1 || SR_Key2) person.SR++;
+                if (PR_Key1 || PR_Key2) myPerson.PR++;
+                if (KP_Key1 || KP_Key2) myPerson.KP++;
+                if (MN_Key1 || MN_Key2) myPerson.MN++;
+                if (VPS_Key1 || VPS_Key2) myPerson.VPS++;
+                if (DAP_Key1 || DAP_Key2) myPerson.DAP++;
+                if (SR_Key1 || SR_Key2) myPerson.SR++;
 
-                person.OAP = person.PR + person.KP + person.MN;
+                myPerson.OAP = myPerson.PR + myPerson.KP + myPerson.MN;
             }
-            System.Windows.MessageBox.Show("достовiрнiсть " + person.D + "\nОАП " + person.OAP + "\nпсихiчна регуляцiя " + person.PR + "\nкомунiкативний потенцiал " + person.KP + "\nморальна нормативнiсть " + person.MN + "\nвiйськово-професiйна спрямованiсть " + person.VPS + "\nсхильнiсть до девiантних форм поведiнки " + person.DAP + "\nсуїцидальний ризик " + person.SR);
-            System.Windows.MessageBox.Show(D_Result(person.D) + "\n\n" + OAP_Result(person.OAP) + "\n\n" + PR_Result(person.PR) + "\n\n" + KP_Result(person.KP) + "\n\n" + MN_Result(person.MN) + "\n\n" + VPS_Result(person.VPS) + "\n\n" + DAP_Result(person.DAP) + "\n\n" + SR_Result(person.SR));
+            System.Windows.MessageBox.Show("достовiрнiсть " + myPerson.D + "\nОАП " + myPerson.OAP + "\nпсихiчна регуляцiя " + myPerson.PR + "\nкомунiкативний потенцiал " + myPerson.KP + "\nморальна нормативнiсть " + myPerson.MN + "\nвiйськово-професiйна спрямованiсть " + myPerson.VPS + "\nсхильнiсть до девiантних форм поведiнки " + myPerson.DAP + "\nсуїцидальний ризик " + myPerson.SR);
+
+            PublishToDB(myPerson);
         }
 
         public void Yes_Click(object sender, RoutedEventArgs e)
@@ -314,7 +314,8 @@ namespace MishaTest
             {
                 Yes.IsEnabled = false;
                 No.IsEnabled = false;
-                ShowResult.IsEnabled = true;
+
+                Results();
             }
             else
             {
@@ -332,7 +333,8 @@ namespace MishaTest
             {
                 Yes.IsEnabled = false;
                 No.IsEnabled = false;
-                ShowResult.IsEnabled = true;
+
+                Results();
             }
             else
             {
@@ -344,9 +346,39 @@ namespace MishaTest
             
         }
 
-        public void ShowResult_Click(object sender, RoutedEventArgs e)
+        private async void PublishToDB(Person myPerson)
         {
-            Results();
+            FirebaseResponse resp = await client.GetTaskAsync("Counter/node");
+            Counter get = resp.ResultAs<Counter>();
+
+            var person = new Person
+            {
+                Id = (Convert.ToInt32(get.cnt) + 1).ToString(),
+                Name = myPerson.Name,
+                Surname = myPerson.Surname,
+                FatherName = myPerson.FatherName,
+                D = myPerson.D,
+                PR = myPerson.PR,
+                KP = myPerson.KP,
+                MN = myPerson.MN,
+                VPS = myPerson.VPS,
+                DAP = myPerson.DAP,
+                SR = myPerson.SR,
+                OAP = myPerson.OAP
+            };
+
+
+            SetResponse response = await client.SetTaskAsync("Information/" + person.Id, person);
+            Person result = response.ResultAs<Person>();
+
+            System.Windows.MessageBox.Show("Inserted \nId " + result.Id + "\nSurname " + result.Surname + "\nName " + result.Name);
+
+            var counterObject = new Counter
+            {
+                cnt = person.Id
+            };
+
+            SetResponse counterResponse = await client.SetTaskAsync("Counter/node", counterObject);
         }
 
         public static string OAP_Result(int OAP)
@@ -417,6 +449,27 @@ namespace MishaTest
             else if (SR >= 5) return "Вiдзначена наявнiсть окремих ознак суїцидальної схильностi.";
             else if (SR >= 4) return "В цiлому виразних ознак суїцидальної схильностi не виявлено.";
             else return "Вiдсутнiсть  ознак суїцидального ризику.";
+        }
+
+        private void login_Click(object sender, RoutedEventArgs e)
+        {
+            myPerson.Name = nameBox.Text;
+            myPerson.Surname = surnameBox.Text;
+            myPerson.FatherName = fatherNameBox.Text;
+
+            loginForm.Visibility = Visibility.Hidden;
+            loginName.Visibility = Visibility.Hidden;
+            loginSurname.Visibility = Visibility.Hidden;
+            loginFatherName.Visibility = Visibility.Hidden;
+            login.Visibility = Visibility.Hidden;
+            nameBox.Visibility = Visibility.Hidden;
+            surnameBox.Visibility = Visibility.Hidden;
+            fatherNameBox.Visibility = Visibility.Hidden;
+
+            QuestionNumber.Visibility = Visibility.Visible;
+            MainBlock.Visibility = Visibility.Visible;
+            Yes.Visibility = Visibility.Visible;
+            No.Visibility = Visibility.Visible;
         }
     }
 }
