@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adaptability200", "Adaptability200\Adaptability200.csproj", "{CE94428E-CA4D-41F2-BBC2-7FF8DFDAD693}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE94428E-CA4D-41F2-BBC2-7FF8DFDAD693}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE94428E-CA4D-41F2-BBC2-7FF8DFDAD693}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE94428E-CA4D-41F2-BBC2-7FF8DFDAD693}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE94428E-CA4D-41F2-BBC2-7FF8DFDAD693}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A24F594-2C4C-4B9B-A333-C5D3F432E77E}
+	EndGlobalSection
+EndGlobal
