@@ -6,12 +6,12 @@ using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 
-namespace Adaptability200.View
+namespace Adaptability200
 {
     /// <summary>
-    /// Логика взаимодействия для TestView.xaml
+    /// Логика взаимодействия для TestPage.xaml
     /// </summary>
-    public partial class TestView : UserControl
+    public partial class TestPage : Page
     {
         IFirebaseConfig config = new FirebaseConfig
         {
@@ -231,7 +231,7 @@ namespace Adaptability200.View
 
         string[] answers = new string[200];
         int i = 0;
-        public TestView()
+        public TestPage()
         {
             InitializeComponent();
             client = new FireSharp.FirebaseClient(config);
@@ -350,7 +350,7 @@ namespace Adaptability200.View
             SetResponse response = await client.SetTaskAsync("Information/" + person.Id, person);
             Person result = response.ResultAs<Person>();
 
-            System.Windows.MessageBox.Show(result.Surname + " " + result.Name + " " + result.FatherName + ", ви пройшли тестування, ваші результати відправлені до психолога");
+            MessageBox.Show(result.Surname + " " + result.Name + " " + result.FatherName + ", ви пройшли тестування, ваші результати відправлені до психолога");
 
             var counterObject = new Counter
             {
@@ -373,11 +373,25 @@ namespace Adaptability200.View
             nameBox.Visibility = Visibility.Hidden;
             surnameBox.Visibility = Visibility.Hidden;
             fatherNameBox.Visibility = Visibility.Hidden;
+            AcceptBox.Visibility = Visibility.Hidden;
 
             QuestionNumber.Visibility = Visibility.Visible;
             MainBlock.Visibility = Visibility.Visible;
             Yes.Visibility = Visibility.Visible;
             No.Visibility = Visibility.Visible;
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if(nameBox.Text.Length >= 1 && surnameBox.Text.Length >= 1 && fatherNameBox.Text.Length >= 1)
+            {
+                login.IsEnabled = true;
+            }
+            else
+            {
+                AcceptBox.IsChecked = false;
+                MessageBox.Show("Ви не ввели свої дані");
+            }
         }
     }
 }

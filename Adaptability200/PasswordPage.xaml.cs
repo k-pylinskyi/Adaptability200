@@ -5,24 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 
-namespace Adaptability200.View
+namespace Adaptability200
 {
     /// <summary>
-    /// Логика взаимодействия для PasswordView.xaml
+    /// Логика взаимодействия для PasswordPage.xaml
     /// </summary>
-    public partial class PasswordView : UserControl
+    public partial class PasswordPage : Page
     {
         IFirebaseConfig config = new FirebaseConfig
         {
@@ -31,7 +24,7 @@ namespace Adaptability200.View
         };
 
         IFirebaseClient client;
-        public PasswordView()
+        public PasswordPage()
         {
             InitializeComponent();
             client = new FireSharp.FirebaseClient(config);
@@ -59,7 +52,7 @@ namespace Adaptability200.View
                 PreviousPasswordBox.Password = string.Empty;
                 NewPasswordBox.Password = string.Empty;
             }
-                
+
         }
     }
 }

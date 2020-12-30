@@ -1,4 +1,4 @@
-﻿using Adaptability200.ViewModel;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,17 +28,17 @@ namespace Adaptability200
 
         private void ToDB_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new DBViewModel();
+            MainFrame.Content = new DBPage();
         }
 
         private void ToTest_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new TestViewModel();
+            MainFrame.Content = new TestPage();
         }
 
         private void ToSettings_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new PasswordViewModel();
+            MainFrame.Content = new PasswordPage();
         }
     }
 }

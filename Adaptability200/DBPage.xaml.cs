@@ -1,18 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 
-namespace Adaptability200.View
+namespace Adaptability200
 {
     /// <summary>
-    /// Логика взаимодействия для DBView.xaml
+    /// Логика взаимодействия для DBPage.xaml
     /// </summary>
-    public partial class DBView : UserControl
+    public partial class DBPage : Page
     {
         IFirebaseConfig config = new FirebaseConfig
         {
@@ -21,7 +31,7 @@ namespace Adaptability200.View
         };
 
         IFirebaseClient client;
-        public DBView()
+        public DBPage()
         {
             InitializeComponent();
             client = new FireSharp.FirebaseClient(config);
@@ -118,6 +128,5 @@ namespace Adaptability200.View
 
             BaseGrid.ItemsSource = employeeList;
         }
-
     }
 }

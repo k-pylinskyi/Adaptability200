@@ -4,21 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Adaptability200"
-        xmlns:viewmodels="clr-namespace:Adaptability200.ViewModel"
-        xmlns:views="clr-namespace:Adaptability200.View"
         mc:Ignorable="d"
         Title="Адаптивність 200" Icon="png/Icon.jpg" Height="500" Width="700">
-    <Window.Resources>
-        <DataTemplate x:Name="TestTemplate" DataType="{x:Type viewmodels:TestViewModel}">
-            <views:TestView DataContext="{Binding}"/>
-        </DataTemplate>
-        <DataTemplate x:Name="DBTemplate" DataType="{x:Type viewmodels:DBViewModel}">
-            <views:DBView DataContext="{Binding}"/>
-        </DataTemplate>
-        <DataTemplate x:Name="PasswordTemplate" DataType="{x:Type viewmodels:PasswordViewModel}">
-            <views:PasswordView DataContext="{Binding}"/>
-        </DataTemplate>
-    </Window.Resources>
     <Grid Background="#CCE5FF">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -34,27 +21,15 @@
             Background="#D1ECF1" FontWeight="Bold"/>
             <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft"
             Background="#D1ECF1">
-                <Button x:Name="ToSettings" FontSize="25" Padding="5" Foreground="White" Background="#D1ECF1" FontWeight="Bold" BorderThickness="0" Click="ToSettings_Click">
+                <Button x:Name="ToSettings" FontSize="25" Padding="5" Foreground="White" Background="#D1ECF1" FontWeight="Bold" BorderThickness="0" Click="ToSettings_Click" Margin="5,0,5,0">
                     <Image Source="png/Password.png"/>
                 </Button>
-                <Button x:Name="ToTest" Content=" Тестування " FontSize="25" Padding="5" Click="ToTest_Click" Foreground="White" Background="#17A2B8" FontWeight="Bold" BorderThickness="0"/>
-                <Button x:Name="ToDB" Content=" База даних " Click="ToDB_Click" FontSize="25" Padding="5" Foreground="White" Background="#17A2B8" FontWeight="Bold" BorderThickness="0"/>
+                <Button x:Name="ToTest" Content=" Тестування " FontSize="25" Padding="5" Click="ToTest_Click" Foreground="White" Background="#17A2B8" FontWeight="Bold" BorderThickness="0" Margin="5,0,5,0"/>
+                <Button x:Name="ToDB" Content=" База даних " Click="ToDB_Click" FontSize="25" Padding="5" Foreground="White" Background="#17A2B8" FontWeight="Bold" BorderThickness="0" Margin="5,0,5,0"/>
             </StackPanel>
         </DockPanel>
 
-        <TextBlock Text="Ласкаво просимо в програму тестування адаптивність 200! Виберіть 'Тестування' щоб почати тестування або 'База даних' щоб ознайомитись з результатами."
-                    Padding="15,10,5,10"
-                    TextAlignment="Center"
-                    TextWrapping="Wrap"
-                    FontSize="25" 
-                    Grid.Column="0" 
-                    Grid.Row="1" 
-                    Grid.ColumnSpan="2" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center"
-                    Foreground="#004085"
-                    FontWeight="Bold"/>
+        <Frame x:Name="MainFrame" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden"/>
 
-        <ContentControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding}"/>
     </Grid>
 </Window>

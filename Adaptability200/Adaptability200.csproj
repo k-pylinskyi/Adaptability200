@@ -68,20 +68,21 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Counter.cs" />
+    <Compile Include="DBPage.xaml.cs">
+      <DependentUpon>DBPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Password.cs" />
+    <Compile Include="PasswordPage.xaml.cs">
+      <DependentUpon>PasswordPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Person.cs" />
-    <Compile Include="ViewModel\DBViewModel.cs" />
-    <Compile Include="ViewModel\PasswordViewModel.cs" />
-    <Compile Include="ViewModel\TestViewModel.cs" />
-    <Compile Include="View\DBView.xaml.cs">
-      <DependentUpon>DBView.xaml</DependentUpon>
+    <Compile Include="TestPage.xaml.cs">
+      <DependentUpon>TestPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PasswordView.xaml.cs">
-      <DependentUpon>PasswordView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\TestView.xaml.cs">
-      <DependentUpon>TestView.xaml</DependentUpon>
-    </Compile>
+    <Page Include="DBPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -94,15 +95,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\DBView.xaml">
+    <Page Include="PasswordPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PasswordView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\TestView.xaml">
+    <Page Include="TestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,9 +131,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="png\Icon.jpg" />
   </ItemGroup>
