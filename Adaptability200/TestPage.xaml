@@ -8,27 +8,26 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TestPage">
 
-    <Grid>
-        <Grid Background="#CCE5FF">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.5*"/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+    <Grid Background="#CCE5FF">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-            <Button x:Name="No" Content="HI" Grid.Row="5" Grid.Column="0" Click="No_Click" FontSize="20" Foreground="White" Background="#DC3545" FontWeight="Bold" Visibility="Hidden"/>
-            <Button x:Name="Yes" Content="ТАК" Grid.Row="5" Grid.Column="1" Click="Yes_Click" FontSize="20" Foreground="White" Background="#28A745" FontWeight="Bold" Visibility="Hidden"/>
+        <Button x:Name="No" Content="HI" Grid.Row="5" Grid.Column="0" Click="No_Click" FontSize="20" Foreground="White" Background="#DC3545" FontWeight="Bold" Visibility="Hidden"/>
+        <Button x:Name="Yes" Content="ТАК" Grid.Row="5" Grid.Column="1" Click="Yes_Click" FontSize="20" Foreground="White" Background="#28A745" FontWeight="Bold" Visibility="Hidden"/>
 
-            <TextBlock x:Name="QuestionNumber" Grid.ColumnSpan="2" Text="" Padding="1" FontSize="25" Foreground="#0C5460" Background="#D1ECF1" Visibility="Hidden" FontWeight="Bold"/>
+        <TextBlock x:Name="QuestionNumber" Grid.ColumnSpan="2" Text="" Padding="1" FontSize="25" Foreground="#0C5460" Background="#D1ECF1" Visibility="Hidden" FontWeight="Bold"/>
 
-            <TextBlock 
+        <TextBlock 
             x:Name="MainBlock" 
             Text="Натисніть кнопку щоб почати тестування" 
             Grid.Row="1" 
@@ -43,24 +42,23 @@
             Background="#CCE5FF"
             Visibility="Hidden"/>
 
-            <Label x:Name="loginForm" Content="Подайте свої дані" Grid.Row="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="#0C5460"
+        <Label x:Name="loginForm" Content="Подайте свої дані" Grid.Row="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="#0C5460"
             Background="#D1ECF1" FontWeight="Bold"/>
-            <Label x:Name="loginName" Content="Ім'я" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="#004085"
+        <Label x:Name="loginName" Content="Ім'я" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="#004085"
             Background="#CCE5FF" FontWeight="Bold"/>
-            <Label x:Name="loginSurname" Content="Прізвище" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="#004085"
+        <Label x:Name="loginSurname" Content="Прізвище" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="#004085"
             Background="#CCE5FF" FontWeight="Bold"/>
-            <Label x:Name="loginFatherName" Content="По батькові" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="#004085"
+        <Label x:Name="loginFatherName" Content="По батькові" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="#004085"
             Background="#CCE5FF" FontWeight="Bold"/>
 
-            <TextBox x:Name="nameBox" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="#004085"
+        <TextBox x:Name="nameBox" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="#004085"
             Background="#FFE7F3FF" FontWeight="Bold" Margin="20"/>
-            <TextBox x:Name="surnameBox" Grid.Column="1" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="#004085"
+        <TextBox x:Name="surnameBox" Grid.Column="1" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="#004085"
             Background="#FFE7F3FF" FontWeight="Bold" Margin="20"/>
-            <TextBox x:Name="fatherNameBox" Grid.Column="1" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="#004085"
+        <TextBox x:Name="fatherNameBox" Grid.Column="1" Grid.Row="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="#004085"
             Background="#FFE7F3FF" FontWeight="Bold" Margin="20"/>
 
-            <CheckBox x:Name="AcceptBox" Content="Я погоджуюся на обробку моїх особистих даних" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="25" FontWeight="Bold" Foreground="#004085" Checked="CheckBox_Checked"/>
-            <Button x:Name="login" Content="Підтвердити" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="White" Background="#28A745" FontWeight="Bold" Click="login_Click" IsEnabled="False"/>
-        </Grid>
+        <CheckBox x:Name="AcceptBox" Content="Я погоджуюся на обробку моїх особистих даних" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="25" FontWeight="Bold" Foreground="#004085" Checked="CheckBox_Checked"/>
+        <Button x:Name="login" Content="Підтвердити" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="White" Background="#28A745" FontWeight="Bold" Click="login_Click" IsEnabled="False"/>
     </Grid>
 </Page>

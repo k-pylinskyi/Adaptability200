@@ -53,3 +53,4 @@ G:\GitProjects\Adaptability200\Adaptability200\Adaptability200\obj\Debug\TestPag
 G:\GitProjects\Adaptability200\Adaptability200\Adaptability200\obj\Debug\DBPage.baml
 G:\GitProjects\Adaptability200\Adaptability200\Adaptability200\obj\Debug\PasswordPage.baml
 G:\GitProjects\Adaptability200\Adaptability200\Adaptability200\obj\Debug\TestPage.baml
+G:\GitProjects\Adaptability200\Adaptability200\Adaptability200\obj\Debug\Adaptability200.csprojAssemblyReference.cache
